@@ -41,20 +41,21 @@
         <h1>WellBeing</h1>
     </header>
         
-    <body class="lblue">
-        <div class="row">
-            <div  id="Home" class="Home">
-                <form id="input-form">
-                    <input id="profile-btn" class="flat-button h175px" type="button" value="Profile" onclick="window.location.href = 'profile.html';">
-                    <input id="survey-btn" class="flat-button h175px" type="button" value="Surveys">
-                    <input id="stats-btn" class="flat-button h175px" type="button" value="Statistics">
-                </form>
-
+    <body class="lgrey">
+            <div class="inline">
+                <img class="round-image" src="img/add_image.png" alt="Add Image">
+                <h2 id="User-Name">John Doe</h2>
             </div>
-        </div>
+            <form class="input-form">
+                <input id="profile-btn" class="flat-button h175px per100" type="button" value="Profile" onclick="window.location.href = 'profile.html';">
+                <input id="survey-btn" class="flat-button h175px per100" type="button" value="Surveys">
+                <input id="stats-btn" class="flat-button h175px per100" type="button" value="Statistics">
+            </form>
         
 
         <script type="text/javascript" src="cordova.js"></script>
-        <!--<script type="text/javascript" src="js/lobby.js"></script> -->       
+        <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="js/lobby.js"></script>      
     </body>
 </html>

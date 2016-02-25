@@ -22,7 +22,7 @@
 
 <!doctype html>
 
-<html lang="en">
+<html lang="en"> <!--style="height:100%;"-->
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
@@ -44,10 +44,21 @@
         <h1>WellBeing</h1>
     </header>
 
-    <body class="lblue">
+    <body class="lgrey"> <!-- style="height:100%;"-->
 
-        <div id="Profile">
-            <div id="Personal">
+        <div class="slick-div"> <!--style="height:30%;"-->
+            <div style="height:85%;">
+                <h4 style="height:85%;">1</h4>
+            </div>
+
+            <div style="height:85%;">
+                <h4 style="height:85%;">2</h4>
+            </div>
+
+            <div style="height:85%;">
+                <h4 style="height:85%;">3</h4>
+            </div>
+            <!--<div id="Personal">
                 <h4 id="ID"></h4>
                 <h4 id="subject-status"></h4>
                 <h4 id="name"></h4>
@@ -99,17 +110,24 @@
                 <h4 id="org-district"></h4>
                 <h4 id="org-location"></h4>
                 <h4 id="org-notes"></h4>
-            </div>
+            </div>-->
         </div>
 
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script> 
+        <!--<script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
         <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script> 
         <script type="text/javascript" src="js/slick-1.5.9/slick/slick.min.js"></script>
         <script type="text/javascript" src="js/profile.js"></script> 
     </body>
+    <footer >
+        <form class="inline">
+            <input type="button" class="prev-btn flat-button h100px" style="width:19.5%; font-size: 40px;" value="<" onclick="prev()">
+            <input type="button" id="edit-btn" class="flat-button h100px" style="width:60%; font-size: 40px;" value="EDIT" onclick="onSubmit()">
+            <input type="button" class="nxt-btn flat-button h100px" style="width:19.5%; font-size: 40px;" value=">" onclick="next()">
+        </form>
+    </footer>
 </html>
 
 <!--<!DOCTYPE html>

@@ -1,9 +1,9 @@
-/*  $("p").on("swipe",function(){
-    $("span").text("Swipe detected!");
-  });                       
-});*/
+$(document).ready(function(){
+    $('.your-class').slick({
+        setting-name: setting-value
+    });
+});
 
-//alert("before");
 $(document).on("pageinit", function(){
 	alert("pagecreate");
 	$("#test").swipe(function(){

@@ -22,7 +22,7 @@
 
 <!doctype html>
 
-<html lang="en" style="height:100%;">
+<html lang="en"> <!--style="height:100%;"-->
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
@@ -44,9 +44,9 @@
         <h1>WellBeing</h1>
     </header>
 
-    <body class="lblue" style="height:100%;">
+    <body class="lgrey"> <!-- style="height:100%;"-->
 
-        <div class="profile" style="height:30%;">
+        <div class="slick-div"> <!--style="height:30%;"-->
             <div style="height:85%;">
                 <h4 style="height:85%;">1</h4>
             </div>
@@ -122,10 +122,10 @@
         <script type="text/javascript" src="js/profile.js"></script> 
     </body>
     <footer >
-        <form style="display: inline-block; width:100%; margin:auto;">
-            <input type="button" id="prev-btn" class="flat-button h100px" style="width:15%;" value="<" onclick="onSubmit()">
-            <input type="button" id="edit-btn" class="flat-button h100px" style="width:60%;" value="EDIT" onclick="onSubmit()">
-            <input type="button" id="nxt-btn" class="flat-button h100px" style="width:15%;" value=">" onclick="onSubmit()">
+        <form class="inline">
+            <input type="button" class="prev-btn flat-button h100px" style="width:19.5%; font-size: 40px;" value="<" onclick="prev()">
+            <input type="button" id="edit-btn" class="flat-button h100px" style="width:60%; font-size: 40px;" value="EDIT" onclick="onSubmit()">
+            <input type="button" class="nxt-btn flat-button h100px" style="width:19.5%; font-size: 40px;" value=">" onclick="next()">
         </form>
     </footer>
 </html>
