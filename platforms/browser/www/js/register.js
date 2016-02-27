@@ -17,7 +17,7 @@ function isPasswordMatch(pwd, pwd_confirm) {
 
 function onSubmit() {
 
-	var name        = document.getElementById('user-name-input');
+	var name      = document.getElementById('user-name-input');
   var email       = document.getElementById('user-email-input');
   var pwd         = document.getElementById('user-password-input');
   var pwd_confirm = document.getElementById('user-password-confirm-input');

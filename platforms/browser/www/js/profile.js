@@ -1,18 +1,15 @@
 function parseAddr(profile, addrType){
     if (profile["Country"] != null) {
-        return profile[addrType + " Address"] + "\n" + \
-               profile[addrType + " City"] + ", " + profile[addrType + " State"] + ", " + \
-               profile["Country"] + " " + profile[addrType + " Zip"];
+        return profile[addrType + " Address"] + "\n" + profile[addrType + " City"] + ", " + profile[addrType + " State"] + ", " + profile["Country"] + " " + profile[addrType + " Zip"];
     }
     else {
-        return profile[addrType + " Address"] + "\n" + \
-               profile[addrType + " City"] + ", " + profile[addrType + " State"] + " " + profile[addrType + " Zip"];
+        return profile[addrType + " Address"] + "\n" + profile[addrType + " City"] + ", " + profile[addrType + " State"] + " " + profile[addrType + " Zip"];
     }
 }
 
 function addSlickSlide(section, dataList){
 
-    $(.slick-div).slick("slickAdd", newHTML);
+    $('.slick-div').slick("slickAdd", newHTML);
 }
 
 function assignInnerHTML(element, tag, keys, profile){
@@ -24,11 +21,11 @@ function assignInnerHTML(element, tag, keys, profile){
     else if (tag == "Home Address:"){
         htmlStr += parseAddr(profile, "Home");
     }
-    for(k : keys){
+    /*for(k : keys){
         if(profile[k]){
             htmlStr += profile[k] + " ";
         }
-    }
+    }*/
 }
 
 $(document).ready(function(){

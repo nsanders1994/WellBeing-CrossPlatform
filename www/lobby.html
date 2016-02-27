@@ -42,14 +42,27 @@
     </header>
         
     <body class="lgrey">
+            <div class="overlay hidden"></div>
+            <div id="pic-dialog" class="dialog hidden">
+                <img src="img/cam.png"  alt="Camera"
+                     style="height:200px; width:200px;"
+                     onclick="takePic()">
+                <figcaption>Camera</figcaption>
+
+                <img src="img/gallery.png" alt="Gallery"
+                     style="height:200px; width:200px;"
+                     onclick="choosePic();">
+                <figcaption>Gallery</figcaption>
+            </div>
+
             <div class="inline">
-                <img class="round-image" src="img/add_image.png" alt="Add Image">
+                <img class="round-image" src="img/default.png" alt="Add Image" onclick="$('.hidden').show();">
                 <h2 id="User-Name">John Doe</h2>
             </div>
             <form class="input-form">
-                <input id="profile-btn" class="flat-button h175px per100" type="button" value="Profile" onclick="window.location.href = 'profile.html';">
-                <input id="survey-btn" class="flat-button h175px per100" type="button" value="Surveys">
-                <input id="stats-btn" class="flat-button h175px per100" type="button" value="Statistics">
+                <input id="profile-btn" class="flat-button h175px w100per" type="button" value="Profile" onclick="window.location.href = 'profile.html';">
+                <input id="survey-btn" class="flat-button h175px w100per" type="button" value="Surveys">
+                <input id="stats-btn" class="flat-button h175px w100per" type="button" value="Statistics">
             </form>
         
 
