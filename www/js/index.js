@@ -31,7 +31,7 @@ function get_profile(token) {
             if (xhttp.status == 200) {
                 response = JSON.parse(xhttp.responseText);
                 if (response.status == "success") {
-                    alert("Profile load success!" + response.profile["First Name"] + " " + response.profile["Last Name"] + " " + response.profile["Gender"]);
+                    //alert("Profile load success!" + response.profile["First Name"] + " " + response.profile["Last Name"] + " " + response.profile["Gender"]);
                     window.localStorage.setItem("profile", JSON.stringify(response.profile));
 
                 } else {
@@ -46,7 +46,7 @@ function get_profile(token) {
 
     };
 
-    xhttp.open("POST", "https://wellbeing-mobile.crc.nd.edu/mobile_app_api/get_profile/", false);
+    xhttp.open("POST", "https://wellbeing-mobile.crc.nd.edu/mobile_app_api/get_categories_profile/", false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("token=" + window.localStorage.getItem("Token"));
 }

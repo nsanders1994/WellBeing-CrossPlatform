@@ -1,33 +1,3 @@
-function parseAddr(profile, addrType){
-    if (profile["Country"] != null) {
-        return profile[addrType + " Address"] + "\n" + profile[addrType + " City"] + ", " + profile[addrType + " State"] + ", " + profile["Country"] + " " + profile[addrType + " Zip"];
-    }
-    else {
-        return profile[addrType + " Address"] + "\n" + profile[addrType + " City"] + ", " + profile[addrType + " State"] + " " + profile[addrType + " Zip"];
-    }
-}
-
-function addSlickSlide(section, dataList){
-
-    $('.slick-div').slick("slickAdd", newHTML);
-}
-
-function assignInnerHTML(element, tag, keys, profile){
-    htmlStr = tag + " ";
-
-    if(tag == "Work Address:"){
-        htmlStr += parseAddr(profile, "Work");
-    }
-    else if (tag == "Home Address:"){
-        htmlStr += parseAddr(profile, "Home");
-    }
-    /*for(k : keys){
-        if(profile[k]){
-            htmlStr += profile[k] + " ";
-        }
-    }*/
-}
-
 $(document).ready(function(){
 	$('.slick-div').slick({
 		slidesToShow: 1,
@@ -37,179 +7,96 @@ $(document).ready(function(){
         arrows: false
 	});
 
-    /*// List of all slides to be added to slick caros
-    var slickCarousel = [];
+    var profile = JSON.parse(window.localStorage.getItem("profile"));
 
-    // Dictionaries of data fields & their values to be added to the carousel
-    var personalSlide = {
-        "SubjectID":undefined:
-        "Title":undefined;
-        "First Name":undefined;
-        "Last Name":undefined;
-        "Suffix":undefined;
-        "Group":undefined;
-        "Research Type":undefined;
-        "Organization Name":undefined;
-    };
-
-    var demographicsSlide = {
-        "Birthday":undefined;
-        "Gender":undefined;
-        "Ethnicity":undefined;
-        "Highest Educational Level":undefined;
-        "Language":undefined;
-        "Job Role":undefined;
-        "Position":undefined;
-        "Marital Status":undefined;
-    };
-    var contactInfoSlide = {
-        "Preferred Email":undefined;
-        "Alternative Email":undefined;
-        "Home Phone":undefined;
-        "Work Phone":undefined;
-        "Cell Phone":undefined;
-        "Home Address":undefined;
-        "Home City":undefined;
-        "Home State":undefined;
-        "Home Zip":undefined;
-        "Work Address":undefined;
-        "Work City":undefined;
-        "Work State":undefined;
-        "Work Zip":undefined;
-        "Country":undefined;
-
-    };
-    var otherInfoSlide = {
-        "Year Began Profession":undefined;
-        "Date Joined Research":undefined;
-        "Bi-Vocational":undefined;
-        "Has Left Vocation":undefined;
-        "Notes":undefined;
-    };
-    var organizationSlide = {
-        "Website":undefined;
-        "District":undefined;
-        "Grade Level":undefined;
-        "Location/Settings":undefined;
-    };
-    var spouseSpecificInfoSlide = {
-        "Spouse SubjectID":undefined;
-        "Spouse First Name":undefined;
-        "Spouse Last Name":undefined;
-        "Spouse Email":undefined;
-    };
-    var clergySpecificInfoSlide = {
-        "Denomination Category":undefined;
-        "Denomination":undefined;
-        "Seminary Attended":undefined;
-        "Year Graduated Seminary";
-    };*/   
-
-	/*var profileObj = window.localStorage.getItem("profile");
-	var profile = JSON.parse(profileObj);
-
-	// Profile Elements
-	var nameElement = document.getElementById("name");
-	var idElement = document.getElementById("ID");
-    var subjectStatusElement = document.getElementById("subject-status");
-    var researchTypeElement = document.getElementById("research-type");
-    var genderElement = document.getElementById("gender");
-    var ethnicityElement = document.getElementById("ethnicity");
-    var dobElement =document.getElementById("DOB");
-    var ageElement = document.getElementById("age");
-    var languageElement = document.getElementById("language");
-    var jobElement = document.getElementById("job");
-    var positionElement =document.getElementById("position");
-    var degreeElement = document.getElementById("degree");
-    var maritalStatusElement = document.getElementById("marital-status");
-    var preferredEmailElement =  document.getElementById("preferred-email");
-    var altEmailElement =  document.getElementById("alt-email");
-    var cellNoElement = document.getElementById("cell-no");
-    var homeNoElement = document.getElementById("home-no");
-    var workNoElement =  document.getElementById("work-no");
-    var homeAddrElement =  document.getElementById("home-addr");
-    var workAddrElement =  document.getElementById("work-addr");
-    var spouseIdElement = document.getElementById("spouse-ID");
-    var spouseNameElement = document.getElementById("spouse-name");
-    var dateJoinedResearchElement = document.getElementById("date-joined-research");
-    var yrBeganProfessionElement = document.getElementById("yr-began-profession");
-    var bivocationalElement = document.getElementById("bivocational");
-    var leftVocationElement = document.getElementById("left-vocation");
-    var groupsElement = document.getElementById("groups");
-    var notesElement = document.getElementById("notes");
-    var orgNameElement = document.getElementById("org-name");
-    var orgTypeElement =document.getElementById("org-type");
-    var headquartersAddrElement = document.getElementById("headquarters-addr");
-    var headquartersPhoneNoElement = document.getElementById("headquarters-phone-no");
-    var orgEmailElement = document.getElementById("org-email");
-    var orgWebsiteElement = document.getElementById("org-website");
-    var orgDistrictElement = document.getElementById("org-district");
-    var orgLocationElement = document.getElementById("org-location");
-    var orgNotesElement =document.getElementById("org-notes");
-
-    // Assign Text from Profile Elements
-
-    // Personal
-    assignInnerHTML(nameElement, tag, ["FirstName", "Last Name"])
-    assignInnerHTML(idElement, )
-    $("#name").innerHTML            = "Name: " + profile["First Name"] + " " + profile["Last Name"];
-    $("#ID").innerHTML              = "ID: " + profile["ID"];
-    $("#subject-status").innerHTML  = profile["First Name"];
-    $("#research-type").innerHTML   = profile["First Name"]
-
-    $("#gender").innerHTML          = "Gender: " + profile["Gender"]
-    $("#ethnicity").innerHTML       = "Ethnicity: " + profile["Ethnicity"]
-    $("#DOB").innerHTML             = "Birthday: " + profile["Birthday"]
-    $("#age").innerHTML             = profile["First Name"]
-    $("#language").innerHTML        = "Language: " + profile["Language"]
-    $("#job").innerHTML             = "Job Role: " + profile["Job Role"]
-    $("#position").innerHTML        = "Position: " + profile["Position"]
-    $("#degree").innerHTML          = profile["Highest Educational Level"]
-    $("#marital-status").innerHTML  = profile["First Name"]
-
-    $("#preferred-email").innerHTML = "Preferred Email: " + profile["Preferred Email"]
-    $("#alt-email").innerHTML       = "Alternative Email: " + profile["Alternative Email"]
-    $("#cell-no").innerHTML         = "Cell Phone: " + profile["Cell Phone"]
-    $("#home-no").innerHTML         = "Home Phone: " + profile["Home Phone"]
-    $("#work-no").innerHTML         = "Work Phone: " + profile["Work Phone"]
-    $("#home-addr").innerHTML       = "Home Address: " + parseHomeAddr(profile);
-    $("#work-addr").innerHTML       = "Work Address: " + parseWorkAddr(profile);
-
-    $("#spouse-ID").innerHTML               = "Spouse ID: " + profile["Spouse SubjectID"]
-    $("#spouse-name").innerHTML             = "Spouse Name: " + profile["Spouse First Name"] + " " + profile["Spouse Last Name"]
-    $("#spouse-email").innerHTML            = "Spouse Email: " + profile["Spouse Email"]
-    $("#date-joined-research").innerHTML    = "Date Joined Research: " + profile["Date Joined Research"]
-    $("#yr-began-profession").innerHTML     = "Year Began Profession: " + profile["Year Began Profession"]
-    $("#bivocational").innerHTML            = "Bivocational: " + profile["Bi-Vocational"]
-    $("#left-vocation").innerHTML           = profile["First Name"]
-    $("#groups").innerHTML                  = "Group: " + profile["Group"]
-    $("#notes").innerHTML                   = "Notes: " + profile["Notes"]
-
-    $("#org-name").innerHTML                = "Organization Name: " + profile["Organization Name"]
-    $("#org-type").innerHTML                = profile["First Name"]
-    $("#headquarters-addr").innerHTML       = profile["First Name"]
-    $("#headquarters-phone-no").innerHTML   = profile["First Name"]
-    $("#org-email").innerHTML               = profile["First Name"]
-    $("#org-website").innerHTML             = "Organization Website: " + profile["Website"]
-    $("#org-district").innerHTML            = "Organization District: " + profile["District"]
-    $("#org-location").innerHTML            = profile["First Name"]
-    $("#org-notes").innerHTML               = profile["First Name"]
-
-
-    $('#Profile').slick({
-    	slidesToShow: 1,
-    	slidesToScroll: 1,
-    	dots: true
-    });*/
+    for(var section in profile){
+        var slideHTML = generateSlideHTML(section, profile[section]);
+        $('.slick-div').slick("slickAdd", slideHTML);
+    }
 });
 
+function generateSlideHTML(sectionTitle, data){
+    var open_tag = "\<div style=\"height:85%;\">";
+    var title = "\<h1 style=\"height:100%;\">" + sectionTitle + "\</h1>";
+    var open_table_tag = "\<table style=\"width:100%\">";
+    var content = String();
+    var close_table_tag = "\</table>";
+    var close_tag = "\</div\>";
+    var allKeys = Object.keys(data);
+
+    // Sort keys alphabetically
+    allKeys.sort();
+
+    for(var i = 0; i < allKeys.length; i++){
+        var formattedPair = formatProfileContent(allKeys[i], data);
+
+        // If our formatted content isn't null and it is not in the HTML content, add it
+        if(formattedPair != null && content.indexOf(formattedPair[0]) < 0){
+            var label = "\<td style=\"font-weight: bold;\">" + formattedPair[0] + "\:</td>";
+            var value = "\<td>" + formattedPair[1] + "\</td>";
+
+            if(label.indexOf("Name") > -1){
+                content = "\<tr style=\"height:85%;\">" + label + value + "\</tr>" + content;
+            }
+            else{
+                content += "\<tr style=\"height:85%;\">" + label + value + "\</tr>";
+            }
+        }
+    }
+
+    return open_tag + title + open_table_tag + content + close_table_tag + close_tag;
+}
+
+function formatProfileContent(key, data){
+    var addressKeywords = ["Home Address", "Home City", "Home State", "Home Zip", "Work Address", "Work City", "Work State", "Work Zip", "Country"];
+
+    if(key.indexOf("Name") > -1){
+        var parsedKey = key.split(" ");
+        var firstNameKey = "First Name";
+        var lastNameKey = "Last Name";
+
+        if(parsedKey.length > 2){
+            firstNameKey = parsedKey.splice(0, parsedKey.length - 2).join(" ") + " First Name";
+            lastNameKey = parsedKey.splice(0, parsedKey.length - 2).join(" ") + " Last Name";
+        }
+
+        return ["Name", data[firstNameKey] + " " + data[lastNameKey]];
+    }
+    else if(addressKeywords.indexOf(key) > -1){
+        // Get address type -- Home or Work
+        var addrType = key.split(" ")[0] + " ";
+        var addr;
+
+        // Format address
+        if(addrType + "Address" in data && addrType + "City" in data && addrType + "State" in data){
+            addr = data[addrType + "Address"] + "\n" + data[addrType + "City"] + ", " + data[addrType + "State"];
+
+            // Add country if one is listed
+            if("Country" in data){
+                addr += ", " + data["Country"];
+            }
+
+            // Add zipcode if one is listed
+            if("Country" in data) {
+                addr += " " + data[addrType + "Zip"];
+            }
+
+            return [addrType + "Address", addr];
+        }
+        else{
+            return [key, data[key]];
+        }
+    }
+    else {
+        return [key, data[key]];
+    }
+}
+
 function next(){
-    //alert('next');
     $('.slick-div').slick('slickNext');
 }
 
 function prev(){
-    //alert('prev');
     $('.slick-div').slick('slickPrev');
 }	
 
