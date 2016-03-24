@@ -52,15 +52,17 @@ function formatProfileContent(key, data){
 
     if(key.indexOf("Name") > -1){
         var parsedKey = key.split(" ");
-        var firstNameKey = "First Name";
-        var lastNameKey = "Last Name";
+        var nameType = parsedKey.splice(0, parsedKey.length - 2).join(" ");
 
-        if(parsedKey.length > 2){
-            firstNameKey = parsedKey.splice(0, parsedKey.length - 2).join(" ") + " First Name";
-            lastNameKey = parsedKey.splice(0, parsedKey.length - 2).join(" ") + " Last Name";
+        if(parsedKey.length > 2 && nameType + " First Name" in data && nameType + " Last Name" in data){
+            var firstNameKey = parsedKey.splice(0, parsedKey.length - 2).join(" ") + " First Name";
+            var lastNameKey = parsedKey.splice(0, parsedKey.length - 2).join(" ") + " Last Name";
+
+            return ["Name", data[firstNameKey] + " " + data[lastNameKey]];
         }
-
-        return ["Name", data[firstNameKey] + " " + data[lastNameKey]];
+        else {
+            return [key, data[key]];
+        }
     }
     else if(addressKeywords.indexOf(key) > -1){
         // Get address type -- Home or Work
