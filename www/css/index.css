@@ -111,6 +111,26 @@ body {
     color: #003366;
 }
 
+.editable-slide{
+    width: 90%;
+    position: absolute;
+    margin: auto;
+    padding: 10px;
+    top: 10%;
+
+}
+.editable-slide h1 {
+    text-align: center;
+    font-size: 35px;
+    color: #003366;
+}
+
+.editable-slide td {
+    text-transform: capitalize;
+    font-size: 25px;
+    color: #003366;
+}
+
 
 
 footer {

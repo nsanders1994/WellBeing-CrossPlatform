@@ -1,3 +1,5 @@
+var slideNo = 0;
+
 $(document).ready(function(){
 	$('.slick-div').slick({
 		slidesToShow: 1,
@@ -7,12 +9,16 @@ $(document).ready(function(){
         arrows: false
 	});
 
+    var formattedProfile = {};
     var profile = JSON.parse(window.localStorage.getItem("profile"));
-
     for(var section in profile){
-        var slideHTML = generateSlideHTML(section, profile[section]);
-        $('.slick-div').slick("slickAdd", slideHTML);
+        if(profile.hasOwnProperty(section)){
+            var slideHTML = generateSlideHTML(section, profile[section], formattedProfile);
+            $('.slick-div').slick("slickAdd", slideHTML);
+        }
     }
+
+    window.localStorage.setItem("formattedProfile", JSON.stringify(formattedProfile));
 });
 
 function generateSlideHTML(sectionTitle, data){
@@ -27,19 +33,27 @@ function generateSlideHTML(sectionTitle, data){
     // Sort keys alphabetically
     allKeys.sort();
 
+    // Iterate through all keys to add them to the slide
     for(var i = 0; i < allKeys.length; i++){
-        var formattedPair = formatProfileContent(allKeys[i], data);
+        // Formats items like addresses & names into list to keep certain items together (e.g. address, state, zip, etc)
+        var formattedList = formatProfileContent(allKeys[i], data);
 
-        // If our formatted content isn't null and it is not in the HTML content, add it
-        if(formattedPair != null && content.indexOf(formattedPair[0]) < 0){
-            var label = "\<td style=\"font-weight: bold;\">" + formattedPair[0] + "\:</td>";
-            var value = "\<td>" + formattedPair[1] + "\</td>";
+        // Iterate through the formatted list (e.g. address)
+        for(var j = 0; j < formattedList.length; j++){
+            var currItem = formattedList[j];
 
-            if(label.indexOf("Name") > -1){
-                content = "\<tr style=\"height:85%;\">" + label + value + "\</tr>" + content;
-            }
-            else{
-                content += "\<tr style=\"height:85%;\">" + label + value + "\</tr>";
+            // If the item isn't already on the slide, add it
+            if(content.indexOf(currItem[0]) < 0){
+                var label = "\<td style=\"font-weight: bold;\">" + currItem[0] + "\:</td>";
+                var value = "\<td>" + currItem[1] + "\</td>";
+
+                // Names should always be at the top
+                if(label.indexOf("Name") > -1){
+                    content = "\<tr style=\"height:85%;\">" + label + value + "\</tr>" + content;
+                }
+                else{
+                    content += "\<tr style=\"height:85%;\">" + label + value + "\</tr>";
+                }
             }
         }
     }
@@ -49,48 +63,85 @@ function generateSlideHTML(sectionTitle, data){
 
 function formatProfileContent(key, data){
     var addressKeywords = ["Home Address", "Home City", "Home State", "Home Zip", "Work Address", "Work City", "Work State", "Work Zip", "Country"];
+    var itemList = [];
 
     if(key.indexOf("Name") > -1){
+        // Get name type -- Spouse or none
         var parsedKey = key.split(" ");
         var nameType = parsedKey.splice(0, parsedKey.length - 2).join(" ");
+        var firstNameKey = "First Name";
+        var lastNameKey = "Last Name";
 
-        if(parsedKey.length > 2 && nameType + " First Name" in data && nameType + " Last Name" in data){
-            var firstNameKey = parsedKey.splice(0, parsedKey.length - 2).join(" ") + " First Name";
-            var lastNameKey = parsedKey.splice(0, parsedKey.length - 2).join(" ") + " Last Name";
+        if(parsedKey.length >= 2 && nameType != ""){
+            firstNameKey = parsedKey.splice(0, parsedKey.length - 2).join(" ") + " First Name";
+            lastNameKey = parsedKey.splice(0, parsedKey.length - 2).join(" ") + " Last Name";
+        }
 
-            return ["Name", data[firstNameKey] + " " + data[lastNameKey]];
+        // Format name "<First Name> <Last Name>"
+        if(firstNameKey in data && lastNameKey in data){
+            itemList.push(["Name", data[firstNameKey] + " " + data[lastNameKey]]);
+            return itemList;
         }
         else {
-            return [key, data[key]];
+            itemList.push([key, data[key]]);
+            return itemList;
         }
     }
     else if(addressKeywords.indexOf(key) > -1){
         // Get address type -- Home or Work
         var addrType = key.split(" ")[0] + " ";
-        var addr;
 
-        // Format address
-        if(addrType + "Address" in data && addrType + "City" in data && addrType + "State" in data){
-            addr = data[addrType + "Address"] + "\n" + data[addrType + "City"] + ", " + data[addrType + "State"];
+        var address = addrType + "Address";
+        var city = addrType + "City";
+        var state = addrType + "State";
+        var zip = addrType + "Address";
+
+        // Format address as one string -- "<Address> <City>, <State>, <Country> <Zip>"
+        if(address in data && city in data && state in data){
+            var fullAddr = data[address] + "\n" + data[city] + ", " + data[state];
 
             // Add country if one is listed
             if("Country" in data){
-                addr += ", " + data["Country"];
+                fullAddr += ", " + data["Country"];
             }
 
             // Add zipcode if one is listed
-            if("Country" in data) {
-                addr += " " + data[addrType + "Zip"];
+            if(zip in data) {
+                fullAddr += " " + data[zip];
             }
 
-            return [addrType + "Address", addr];
+            itemList.push([address, fullAddr]);
+            return itemList;
         }
+        // Format an address list such that address items are in order
         else{
-            return [key, data[key]];
+            // Add address if one is listed
+            if(address in data){
+                itemList.push([address, data[address]]);
+            }
+            // Add city if one is listed
+            if(city in data){
+                itemList.push([city, data[city]]);
+            }
+            // Add state if one is listed
+            if(state in data){
+                itemList.push([state, data[state]]);
+            }
+            // Add country if one is listed
+            if("Country" in data){
+                itemList.push(["Country", data["Country"]]);
+            }
+            // Add zip if one is listed
+            if(zip in data){
+                itemList.push([zip, data[zip]]);
+            }
+
+            return itemList;
         }
     }
     else {
-        return [key, data[key]];
+        itemList.push([key, data[key]]);
+        return itemList;
     }
 }
 
@@ -103,5 +154,6 @@ function prev(){
 }	
 
 function edit(){
-    alert("Hit Edit");
+    alert("in edit");
+    window.location.href = 'profile-edit.html?' + $('.slick-div').slick('slickCurrentSlide');
 }
