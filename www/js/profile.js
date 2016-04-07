@@ -17,8 +17,6 @@ $(document).ready(function(){
             $('.slick-div').slick("slickAdd", slideHTML);
         }
     }
-
-    window.localStorage.setItem("formattedProfile", JSON.stringify(formattedProfile));
 });
 
 function generateSlideHTML(sectionTitle, data){

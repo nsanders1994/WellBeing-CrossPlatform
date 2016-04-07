@@ -1,5 +1,4 @@
-var slideNum = 0;
-var slides = [];
+var profile = JSON.parse(window.localStorage.getItem("profile"));
 
 $(document).ready(function(){
 	$('.slick-div').slick({
@@ -10,7 +9,6 @@ $(document).ready(function(){
 		arrows: false
 	});
 
-	var profile = JSON.parse(window.localStorage.getItem("profile"));
     var slideNo = 1;
 
 	for(var section in profile){
@@ -19,29 +17,14 @@ $(document).ready(function(){
             $('.slick-div').slick("slickAdd", slideHTML);
         }
 	}
-
-    /*var profile = JSON.parse(window.localStorage.getItem("profile"));
-    var sectionList = Object.keys(profile);
-    slideNum = (location.search).replace("?", "");
-
-    alert(slideNum);
-
-    for(var k = 0; k < sectionList.length; k++){
-        var section = sectionList[k];
-        slides.push(generateSlideHTML(section, profile[section], k));
-    }
-
-    alert(slides[slideNum]);
-
-    $('.editable-slide').html(slides[slideNum]);*/
 });
 
-function generateSlideHTML(sectionTitle, data, i){
+function generateSlideHTML(sectionTitle, data, sectionNum){
     var open_tag = "\<div style=\"height:85%;\">";
-    var title = "\<h1 contenteditable='true' style=\"height:100%;\">" + sectionTitle + "\</h1>";
-    var open_table_tag = "\<table id=\"Slide" + i.toString() + "\" \style=\"width:100%\">";
+    var title = "\<h1 class='profile-sections' style=\"height:100%;\">" + sectionTitle + "\</h1>";
+    var open_form_tag = "\<form class='input-form carousel' style='text-align: left'>";
     var content = String();
-    var close_table_tag = "\</table>";
+    var close_form_tag = "\</form>";
     var close_tag = "\</div\>";
     var allKeys = Object.keys(data);
 
@@ -56,20 +39,21 @@ function generateSlideHTML(sectionTitle, data, i){
 
             // If the item isn't already on the slide, add it
             if(content.indexOf(currItem[0]) < 0) {
-                var label = "\<td style=\"font-weight: bold;\">" + currItem[0] + "\:</td>";
-                var value = "\<td contenteditable=\'true\'>" + currItem[1] + "\</td>";
+                var label = "\<h2>" + currItem[0] + "\:</h2>";
+                var value = "\<input type='text' class='h60px profile-inputs' name='"
+                    + currItem[0] + "' section='" + sectionTitle + "' value='" + currItem[1] + "'/>";
 
                 if (label.indexOf("Name") > -1) {
-                    content = "\<tr style=\"height:85%;\" name = " + label + "\>" + label + value + "\</tr>" + content;
+                    content = label + value + content;
                 }
                 else {
-                    content += "\<tr style=\"height:85%;\" name = " + label + "\>" + label + value + "\</tr>";
+                    content += label + value;
                 }
             }
         }
     }
 
-    return open_tag + title + open_table_tag + content + close_table_tag + close_tag;
+    return open_tag + title + open_form_tag + content + close_form_tag + close_tag;
 }
 
 function formatProfileContent(key, data){
@@ -135,27 +119,27 @@ function formatProfileContent(key, data){
 }
 
 function next(){
-    $('.slick-div').html = slides[++slideNum];
+    $('.slick-div').slick('slickNext');
 }
 
 function prev(){
-    $('.slick-div').html = slides[--slideNum];
+    $('.slick-div').slick('slickPrev');
 }
 
 function onSubmit(){
     // Check Edit Queue
 
     // Save Current Edit
-
-    var table = document.getElementById("Slide");
-    for (var i = 0, row; row = table.rows[i]; i++) {
-        //iterate through rows
-        //rows would be accessed using the "row" variable assigned in the for loop
-        for (var j = 0, col; col = row.cells[j]; j++) {
-            //iterate through columns
-            //columns would be accessed using the "col" variable assigned in the for loop
-        }
+    var allInputs = $(".profile-inputs");
+    alert(allInputs.length);
+    for (var i = 0; i < allInputs.length; i++){
+        var currInput = allInputs[i];
+        var sectionName = currInput.getAttribute("section");
+        profile[sectionName][currInput.name] = currInput.value;
     }
 
+    window.localStorage.setItem("profile", JSON.stringify(profile));
+
     // href back to profile.html
+    window.location.href = "profile.html";
 }
