@@ -4,7 +4,13 @@ $(document).ready(function(){
 	var profile = JSON.parse(profileObj);
 
     // Update username in lobby
-	$('#User-Name').html(profile["Personal Info"]["First Name"] + " " + profile["Personal Info"]["Last Name"]);
+    if(profile != null &&
+       "Personal Info" in profile &&
+       "First Name" in profile["Personal Info"] &&
+       "Last Name" in profile["Personal Info"]){
+
+        $('#User-Name').html(profile["Personal Info"]["First Name"] + " " + profile["Personal Info"]["Last Name"]);
+    }
 
     // Update profile pic in lobby
     if(window.localStorage.getItem("profile-pic") != null){
