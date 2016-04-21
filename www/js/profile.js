@@ -152,5 +152,5 @@ function prev(){
 
 function edit(){
     alert("in edit");
-    window.location.href = 'profile-edit.html?' + $('.slick-div').slick('slickCurrentSlide');
+    window.location.href = 'profile_edit.html'; //?' + $('.slick-div').slick('slickCurrentSlide');
 }

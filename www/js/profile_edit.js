@@ -127,10 +127,9 @@ function prev(){
 
 function onSubmit(){
     // Check Edit Queue
-
+    
     // Save Current Edit
     var allInputs = $(".profile-inputs");
-    alert(allInputs.length);
     for (var i = 0; i < allInputs.length; i++){
         var currInput = allInputs[i];
         var sectionName = currInput.getAttribute("section");
