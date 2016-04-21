@@ -4,7 +4,7 @@
  * distributed with this work for additional information
  * regarding copyright ownership.  The ASF licenses this file
  * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
+ * "License"); you may not use this file excepx in compliance
  * with the License.  You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -27,50 +27,51 @@ body {
     background-color:#E4E4E4; /* #A7A7A7 */
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:12px;
+    font-size:12pt;
     height:100%;
-    margin:0px;
-    padding:0px;
+    margin:0pt;
+    padding:0pt;
     text-transform:uppercase;
     width:100%;
 }
 
 .flat-button{
-  width: 100%;
-  padding: 0px;
-  margin-bottom: 20px;
-  color: white;
-  text-align: center;
-  text-shadow: none;
-  background: #0099CC;
-  border: 0;
-  border-bottom: 2px solid #2a8bcc;
-  cursor: pointer;
-  box-shadow: none;
+    width: 100%;
+    padding-top: 7pt;
+    padding-bottom: 7pt;
+    color: white;
+    text-align: center;
+    background: #0099CC;
+    cursor: pointer;
+    text-shadow: none;
+    box-shadow: none;
+    border: 0;
+    -webkit-appearance: none;
+    border-radius: 0pt !important;
 }
 
-.h60px{
-    height:60px;
+.h60pt{
+    height:60pt;
 }
 
-.h100px{
-    height:100px;
-    font-size: 22px;
+.h100pt{
+    height:100pt;
+    font-size: 22pt;
 }
 
-.h150px{
-    height:150px;
-    font-size: 22px;
+.h150pt{
+    height:150pt;
+    font-size: 22pt;
 }
 
-.h175px{
-    height:175px;
-    font-size: 50px;
+.h175pt{
+    height:175pt;
+    font-size: 50pt;
 }
 
-.h250px{
-    height:250px;
-    font-size: 50px;
+.h250pt{
+    height:250pt;
+    font-size: 50pt;
 }
 
 
@@ -79,7 +80,7 @@ body {
 }
 
 .lblue{
-    background-color: #E0FFFF;      
+    background-color: #E0FFFF;
 }
 
 .blue{
@@ -95,19 +96,19 @@ body {
     background-color: #FFFFFF;
     position: absolute;
     margin: auto;
-    padding: 10px;
+    padding: 10pt;
     top: 10%;
 
 }
 .slick-div h1 {
     text-align: center;
-    font-size: 35px;
+    font-size: 1.5em;
     color: #003366;
 }
 
 .slick-div td {
     text-transform: capitalize;
-    font-size: 25px;
+    font-size: 1em;
     color: #003366;
 }
 
@@ -115,33 +116,32 @@ body {
     width: 90%;
     position: absolute;
     margin: auto;
-    padding: 10px;
+    padding: 10pt;
     top: 10%;
 
 }
 .editable-slide h1 {
     text-align: center;
-    font-size: 35px;
+    font-size: 35pt;
     color: #003366;
 }
 
 .editable-slide td {
     text-transform: capitalize;
-    font-size: 25px;
+    font-size: 2em;
     color: #003366;
 }
 
 
 
 footer {
-    line-height: 100px;
+    line-height: 100pt;
     position: fixed;
-    bottom:0px;
+    bottom:0;
     width: 100%;
     margin-left: 0;
     margin-right: 0;
-    height: 150px;
-    text-align: center; 
+    text-align: center;
 }
 
 /* Landscape layout (with min-width) */
@@ -159,47 +159,68 @@ footer {
     }
 }
 
+@viewport
+{
+    width:320px;
+}
+
+@-ms-viewport {
+    width:320px;
+    zoom-user:fixed;
+    max-zoom:1;
+    min-zoom:1;
+}
+
 #errorbox label {
     text-align: center;
-    font-size: 35px;
+    font-size: 2em;
 }
 
 .input-form {
     text-align: center;
-    width: 100%;
 }
 
 .input-form input.w80per {
     width: 80%;
-    margin-top: 10px;
-    font-size: 35px;
+    margin-top: 10pt;
+    font-size: 2em;
+    text-shadow: none;
+    box-shadow: none;
+    border: 0;
+    -webkit-appearance: none;
+    border-radius: 0pt !important;
 }
 
 .input-form input.w100per{
     width:100%;
-    margin-top: 10px;
-    font-size: 35px;
-    padding-top: 10px;
+    margin-top: 10pt;
+    font-size: 2em;
+    padding-top: 10pt;
+    text-shadow: none;
+    box-shadow: none;
+    border: 0;
+    -webkit-appearance: none;
+    border-radius: 0pt !important;
 }
 
 .carousel .input-form {
     text-align: left;
-    width: 100%;
+    font-size: 1em;
+    text-shadow: none;
+    box-shadow: none;
+    border: 0;
+    -webkit-appearance: none;
+    border-radius: 0pt !important;
 }
 
 .carousel h2{
     font-weight: bold;
-    font-size: 30px;
-    margin-top: 40px;
-    margin-left: 20px;
+    font-size: 1em;
 }
 
-.carousel input{
-    width: 92%;
-    margin-left: 20px;
-    font-size: 35px;
+.carousel .input-form input{
+    width: 80%;
 }
-
 
 .Home {
     text-align: center;
@@ -210,63 +231,70 @@ footer {
 .Home h2{
     text-align: center;
     color: #003366;
-    font-size: 35px;
+    font-size: 35pt;
 }
 
 .Home h3{
     text-align: center;
     color: #003366;
-    font-size: 25px;
+    font-size: 25pt;
 }
 
 .Home h4{
     text-align: left;
     color: #003366;
-    font-size: 35px;
+    font-size: 35pt;
 }
 
 header h1{
     position: initial;
     z-index: 9;
     margin: 0;
-    font-size: 70px;
+    font-size: 3em;
     color:white;
     background-color:#0099CC;
-    padding: 10px;
+    padding: 10pt;
     text-align: center;
 }
 
 .round-image {
     border-radius: 50%;
-    height: 200px;
-    width: 200px;
+    height: 5em;
+    width: 5em;
     display: block;
     overflow:hidden;
-    clip:rect(0px,200px,200px,0px);
+    clip:rect(0pt,5em,5em,0pt);
 }
 
 .dialog {
+    text-align: center;
+    vertical-align: middle;
     position:absolute;
-    margin: -150px 0 0 -250px;;
+    margin: -30vw 0 0 -40vw;
     top: 50%;
     left: 50%;
-    width: 500px;
-    height:300px;
+    width: 80vw;
+    height:40vw;
     background:#0099CC;
-    border: 1px #E0FFFF;
+    border: 1pt #E0FFFF;
     z-index: 12;
+    padding: 5% 0;
+}
+
+.dialog .icons {
+    display: inline-block;
+    padding: 10% 0;
 }
 
 .inline {
     display: inline-block;
     width: auto;
-    margin: 45px;
     text-align: center;
 }
 
 .dialog figcaption {
     color: #FFFFFF;
-    font-size: 35px;
+    font-size: 1em;
 }
 
 .overlay{

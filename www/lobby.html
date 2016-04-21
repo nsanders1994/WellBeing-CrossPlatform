@@ -44,23 +44,25 @@
     <body class="lgrey" style="top:50px;">
             <div class="overlay hidden"></div>
             <div id="pic-dialog" class="dialog hidden">
-                <div class="inline">
-                    <img src="img/cam.png"  alt="Camera"
-                         style="height:150px; width:150px;"
-                         onclick="takePic()">
-                    <figcaption>Camera</figcaption>
-                </div>
+                <div class="icons">
+                    <div class="inline">
+                        <img src="img/cam.png"  alt="Camera"
+                             style="height:5em; width:5em;"
+                             onclick="takePic()">
+                        <figcaption>Camera</figcaption>
+                    </div>
 
-                <div class="inline">
-                    <img src="img/gallery.png" alt="Gallery"
-                         style="height:150px; width:150px;"
-                         onclick="choosePic();">
-                    <figcaption>Gallery</figcaption>
+                    <div class="inline">
+                        <img src="img/gallery.png" alt="Gallery"
+                             style="height:5em; width:5em;"
+                             onclick="choosePic();">
+                        <figcaption>Gallery</figcaption>
+                    </div>
                 </div>
                 <form class="input-form" name="Cancel" >
                     <input type="button" id="cancel-btn"  value="CANCEL"
                            class="flat-button w100per"
-                           style="color:white; font-size:35px; margin-top: 30px; padding-top: 30px; padding-bottom: 30px;"
+                           style="color:white; font-size:1.5em; margin-top: 50pt; padding-top: 7pt; padding-bottom: 7pt;"
                            onclick="$('.hidden').hide();">
                 </form>
             </div>
@@ -70,13 +72,13 @@
                     <img class="round-image" src="img/default.png" alt="Add Image" onclick="$('.hidden').show();">
                 </div>
                 <div class="inline" style="margin-left:0px;">
-                    <h2 id="User-Name" style="color:#0099CC; font-size: 50px">John Doe</h2>
+                    <h2 id="User-Name" style="color:#0099CC; font-size: 1.5em">John Doe</h2>
                 </div>
             </div>
             <form class="input-form" style="position: fixed; bottom: 0;">
-                <input id="profile-btn" class="flat-button h250px w100per" type="button" value="Profile" onclick="window.location.href = 'profile.html';">
-                <input id="survey-btn" class="flat-button h250px w100per" type="button" value="Surveys">
-                <input id="stats-btn" class="flat-button h250px w100per" type="button" value="Statistics" onclick="window.location.href = 'stats.html';">
+                <input id="profile-btn" class="flat-button w100per" type="button" value="Profile" onclick="window.location.href = 'profile.html';">
+                <input id="survey-btn" class="flat-button w100per" type="button" value="Surveys">
+                <input id="stats-btn" class="flat-button w100per" type="button" value="Statistics" onclick="window.location.href = 'stats.html';">
             </form>
         
 

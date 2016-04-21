@@ -31,7 +31,8 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
         <title>Wellbeing</title>
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <!--<link rel="stylesheet" media="screen" href="bootstrap/css/bootstrap.css" />-->
+        <link rel="stylesheet" media="screen" href="css/index.css" />
 
         <meta name="description" content="Wellbeing">
         
@@ -42,7 +43,7 @@
     </header>
         
     <body class="lgrey">
-        <div class="row">
+        <!--<div class="row">
             <div class="col-md-6 col-md-offset-3 Home">
                 <h2>Log In To Get Started!</h2>
                 <div id="errorbox"></div>
@@ -52,9 +53,7 @@
                     <input type="password" id="user-password-input" class="h60px w80per" name="password" placeholder="Password" required>    
                     <input type="button" id="login-btn" class="flat-button h100px w80per" value="Login" onclick="onSubmit()">           
                 </form>
-
                 <h3>or</h3>
-
                 <form class="input-form" name="Signup" >
                     <input type="button" class="flat-button h100px w80per" value="Sign Up" onclick="window.location.href = 'registration.html';">
                 </form>
@@ -63,10 +62,31 @@
                 </form>
 
             </div>
-        </div>
+        </div>-->
+                <form class="input-form" name="login" accept-charset="utf-8">
+                    <h2>Log In To Get Started!</h2>
+                    <div id="errorbox"></div>
+                    <input type="text" id="user-email-input" class="h60px w80per" name="usermail" placeholder="Username" required>
+                    <input type="password" id="user-password-input" class="w80per" name="password" placeholder="Password" required>
+                    <input type="button" id="login-btn" class="w80per flat-button" value="Login" onclick="onSubmit()">
+                </form>
+
+
+
+        <!--<div class="container">
+            <form class="form-signin">
+                <h2 class="form-signin-heading">Log In To Get Started!</h2>
+                <div id="errorbox"></div>
+                <input type="text" id="user-email-input" class="form-control" name="usermail" placeholder="Username" required>
+                <input type="password" id="user-password-input" class="form-control" name="password" placeholder="Password" required>
+                <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="onSubmit()">Login</button>
+            </form>
+        </div>-->
         
         
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         
     </body>
