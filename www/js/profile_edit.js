@@ -127,7 +127,7 @@ function prev(){
 
 function onSubmit(){
     // Check Edit Queue
-    
+
     // Save Current Edit
     var allInputs = $(".profile-inputs");
     for (var i = 0; i < allInputs.length; i++){
