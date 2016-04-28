@@ -4,16 +4,14 @@ $(document).ready(function(){
 	$('.slick-div').slick({
 		slidesToShow: 1,
 		slidesToScroll: 1,
-		dots: true,
 		infinite: false,
         arrows: false
 	});
 
-    var formattedProfile = {};
     var profile = JSON.parse(window.localStorage.getItem("profile"));
     for(var section in profile){
         if(profile.hasOwnProperty(section)){
-            var slideHTML = generateSlideHTML(section, profile[section], formattedProfile);
+            var slideHTML = generateSlideHTML(section, profile[section]);
             $('.slick-div').slick("slickAdd", slideHTML);
         }
     }
@@ -92,7 +90,7 @@ function formatProfileContent(key, data){
         var address = addrType + "Address";
         var city = addrType + "City";
         var state = addrType + "State";
-        var zip = addrType + "Address";
+        var zip = addrType + "Zip";
 
         // Format address as one string -- "<Address> <City>, <State>, <Country> <Zip>"
         if(address in data && city in data && state in data){
@@ -153,5 +151,5 @@ function prev(){
 
 function edit(){
     alert("in edit");
-    window.location.href = 'profile-edit.html?' + $('.slick-div').slick('slickCurrentSlide');
+    window.location.href = 'profile_edit.html'; //?' + $('.slick-div').slick('slickCurrentSlide');
 }

@@ -4,7 +4,6 @@ $(document).ready(function(){
 	$('.slick-div').slick({
 		slidesToShow: 1,
 		slidesToScroll: 1,
-		dots: true,
 		infinite: false,
 		arrows: false
 	});
@@ -40,7 +39,7 @@ function generateSlideHTML(sectionTitle, data, sectionNum){
             // If the item isn't already on the slide, add it
             if(content.indexOf(currItem[0]) < 0) {
                 var label = "\<h2>" + currItem[0] + "\:</h2>";
-                var value = "\<input type='text' class='h60px profile-inputs' name='"
+                var value = "\<input type='text' class='profile-inputs' name='"
                     + currItem[0] + "' section='" + sectionTitle + "' value='" + currItem[1] + "'/>";
 
                 if (label.indexOf("Name") > -1) {
@@ -131,7 +130,6 @@ function onSubmit(){
 
     // Save Current Edit
     var allInputs = $(".profile-inputs");
-    alert(allInputs.length);
     for (var i = 0; i < allInputs.length; i++){
         var currInput = allInputs[i];
         var sectionName = currInput.getAttribute("section");
